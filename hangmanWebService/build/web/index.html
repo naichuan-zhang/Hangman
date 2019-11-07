@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman WebService API</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            font-size:1.0em;
+            margin:0px;
+            padding:0px;
+            text-align:center;
+            min-height: 100%;
+            background:linear-gradient(#56A6D0, #9ED8F6, white);
+            background-attachment: fixed;
+        }
+        
+        #container {
+            width:1000px;
+            margin:auto;
+            margin-top:25px;
+            border:1px black solid;
+            text-align:left;
+            background-color:rgb(158,216,246);
+        }
+        
+        #header {
+            width:1000px;
+            text-align:right;
+            font-size:2.4em;
+            height:60px;
+            border-bottom:1px black solid;
+        }
+        
+        #header p {
+            padding:10px;
+            padding-bottom:25px;
+        }
+        
+        #nav {
+            height:50px;
+            background-color:#303030;
+            border-bottom:1px black solid;
+        }
+        
+        #menu {
+            width:0px;
+            height:100%;
+            background-color:red;
+            float:left;
+        }
+        
+        #body {
+            width:1000px;
+            height:100%;
+            background-color:white;
+            float:right;
+        }
+        
+        #body p, #body table {
+            padding:10px;
+        }
+        
+        #body table {
+            border-collapse: collapse;
+            width:90%;
+            margin:auto;
+            margin-bottom:50px;
+        }
+        
+        #body table td {
+            border:1px #303030 solid;
+            text-align:left;
+            padding:5px;
+        }
+        
+        #body table td.heading {
+            background-color:#535353;
+            color:white;
+            font-weight:bold;
+        }
+        
+        #body table tr:nth-child(odd) {
+            background-color:rgb(229,247,187);
+        }
+        
+        #body table tr:nth-child(even) {
+            background-color:rgb(199,217,157);
+        }
+        
+        #footer {
+            height:80px;
+            width:1000px;
+            text-align:center;
+            border-top:1px dotted black;
+        }
+        
+        #footer p {
+            padding:15px;
+        }
+        
+        .clear {
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <p>Hangman WebService API</p>
+    </div>
+    <div class="clear"></div>
+    
+    <div id="nav">
+        
+    </div>
+    <div class="clear"></div>
+    
+    <div id="menu">
+        
+    </div>
+    <div id="body">
+        <p>The WSDL for this service can be found at:<br />
+            <br />
+            http://10.100.106.19:8080/hangmanWebService/hangman?WSDL</p>
+        <p> The webservice offers the following functionality:</p>
+        <table>
+        <tr>
+            <td class="heading">Method Name</td>
+            <td class="heading">Method Parameters</td>
+            <td class="heading">Return Values</td>
+        </tr>
+        <tr>
+            <td>checkLogin</td>
+            <td>String username, String password</td>
+            <td>0 if credentials incorrect, -1|-2 if problem talking to database, positive integer referencing users.autoID if correct </td>
+        </tr>
+        <tr>
+            <td>registerUser</td>
+            <td>String name, String surname, String username, String password, String email</td>
+            <td>0 if cannot add credentials, -1 if problem talking to database, positive integer referencing users.autoID if correct </td>
+        </tr>
+        <tr>
+            <td>newGame</td>
+            <td>int playerID</td>
+            <td>Returns the id (games.autoID) of the game just created, otherwise it returns -1</td>
+        </tr>
+        <tr>
+            <td>getWord</td>
+            <td>int gameId</td>
+            <td>the word this game is using</td>
+        </tr>
+        <tr>
+            <td>addGuess</td>
+            <td>String the letter guessed, int playerId, int gameId</td>
+            <td>a comma separated list of indices where the letter matches or, "" (an empty string) if it didn't match, otherwise "EXCEPTION_ERROR"</td>
+        </tr>
+        <tr>
+            <td>guessesUsed</td>
+            <td>int gameId</td>
+            <td>the number of guesses made</td>
+        </tr>
+        <tr>
+            <td>getRandomWord</td>
+            <td>NO PARAMETERS REQUIRED</td>
+            <td>returns a random word from the database, occasionally returns an empty string</td>
+        </tr>
+        </table>
+    </div>
+    <div class="clear"></div>
+    
+    <div id="footer">
+        <p>2018 &copy; James Murphy </p>
+        <br /><br />
+    </div>
+</div>
+</body>
+</html>
